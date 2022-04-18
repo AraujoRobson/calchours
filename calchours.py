@@ -1,16 +1,19 @@
 from datetime import datetime as dt
 from tkinter import *
-from typing import TextIO
+from turtle import width
+import dearpygui.dearpygui as dpg
 
 def calc_hours():
+
     #carga = input('(HH:MM) Carga horária diária: ') #recebe carga horaria
     #hora_1 = input('(HH:MM) Entrada 1: ') #recebe primeira hora
     #hora_2 = input('(HH:MM) Saída   1: ') #recebe segunda hora
     #hora_3 = input('(HH:MM) Entrada 2: ') #recebe segunda hora
     #hora_4 = input('(HH:MM) Saída   2: ') #recebe segunda hora
 
+
     carga = "08:48"
-    hora_1 = "08:10"
+    hora_1 = "08:00"
     hora_2 = "12:00"
     hora_3 = "13:30"
     hora_4 = "18:18"
@@ -48,34 +51,61 @@ def calc_hours():
 
     if msg1 == "EXISTE EXTRA DE:":
         texto = f'''
-        Carga horária:    {carga}
-        Horas Trbalhadas: {horas_trab}
-        {msg1}  {exft}'''
+        Carga horária:        {carga}
+        Horas Trabalhadas:  {horas_trab}
+        {msg1}   {exft}'''
     elif msg1 == "EXISTE FALTA DE:":
         texto = f'''
-        Carga horária:    {carga}
-        Horas Trbalhadas: {horas_trab}
-        {msg1}  {exft}'''
+        Carga horária:        {carga}
+        Horas Trabalhadas:  {horas_trab}
+        {msg1}   {exft}'''
     else:
         texto = f'''
-        Carga horária:    {carga}
-        Horas Trbalhadas: {horas_trab}
+        Carga horária:        {carga}
+        Horas Trabalhadas:  {horas_trab}
         {msg1}'''
 
     texto_resultado["text"] = texto
 
 
+#config window
+WINDOW_TITLE = "AMMES | CALCULADORA DE HORAS"
+WINDOW_HEIGHT = 550
+WINDOW_WIDTH = 380
+SPACING = 5
+SHORT_INPUT_WIDTH = 150
+
+dpg.create_context()
+
+vp = dpg.create_viewport(
+    title=WINDOW_TITLE,
+    width=WINDOW_WIDTH,
+    height=WINDOW_HEIGHT,
+    small_icon="docs/Logo.ico",
+    large_icon="docs/Logo.ico"
+    )
+# dpg.create_viewport(title= "AMMES | CALCULADORA DE HORAS", width=380 , height=550)
+
+with dpg.window(tag= "primary"):
+    dpg.add_text("Defina a Carga horária:")
+    dpg.add_input_text(default_value= "08:48")
+    dpg.add_text("Defina o horário da ENTRADA 1:")
+    dpg.add_input_text(default_value= "08:00")
+    dpg.add_text("Defina o horária da SAÍDA 1:")
+    dpg.add_input_text(default_value= "12:00")
+    dpg.add_text("Defina o horário da ENTRADA 2:")
+    dpg.add_input_text(default_value= "13:30")
+    dpg.add_text("Defina o horária da SAÍDA 2:")
+    dpg.add_input_text(default_value= "18:18")
+    btn_result = dpg.add_button(label="Resultado")
 
 
-janela = Tk()
-janela.title("AMMES | CALCULADORA DE HORAS")
-janela.geometry('450x550')
 
-btn_result = Button(janela, text= "RESULTADO", command=calc_hours)
-btn_result.grid(column=0, row=0)
-
-texto_resultado = Label(janela, text="Informe as entradas e saídas para obter o resultado!")
-texto_resultado.grid(column=0, row=2)
+dpg.setup_dearpygui()
+dpg.show_viewport()
+dpg.set_primary_window("primary", True)
 
 
-janela.mainloop()
+dpg.start_dearpygui()
+
+dpg.destroy_context()
