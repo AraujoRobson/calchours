@@ -82,7 +82,6 @@ vp = dpg.create_viewport(
     small_icon="docs/Logo.ico",
     large_icon="docs/Logo.ico"
     )
-# dpg.create_viewport(title= "AMMES | CALCULADORA DE HORAS", width=380 , height=550)
 
 with dpg.window(tag= "primary"):
     dpg.add_text("Defina a Carga horária:")
