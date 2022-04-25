@@ -1,6 +1,4 @@
 from datetime import datetime as dt
-from tkinter import *
-from turtle import width
 import dearpygui.dearpygui as dpg
 
 def calc_hours():
@@ -65,7 +63,7 @@ def calc_hours():
         Horas Trabalhadas:  {horas_trab}
         {msg1}'''
 
-    texto_resultado["text"] = texto
+    print(texto)
 
 
 #config window
@@ -88,16 +86,21 @@ vp = dpg.create_viewport(
 
 with dpg.window(tag= "primary"):
     dpg.add_text("Defina a Carga horária:")
-    dpg.add_input_text(default_value= "08:48")
+    get_carga = dpg.add_input_text(hint="Carga Horária:")
+    
     dpg.add_text("Defina o horário da ENTRADA 1:")
-    dpg.add_input_text(default_value= "08:00")
+    get_horaEnt1 = dpg.add_input_text(hint="ENTRADA 1:")
+    
     dpg.add_text("Defina o horária da SAÍDA 1:")
-    dpg.add_input_text(default_value= "12:00")
+    get_horaSai1 = dpg.add_input_text(hint= "SAÍDA 1:")
+    
     dpg.add_text("Defina o horário da ENTRADA 2:")
-    dpg.add_input_text(default_value= "13:30")
+    get_horaEnt2 = dpg.add_input_text(hint="ENTRADA 2:")
+    
     dpg.add_text("Defina o horária da SAÍDA 2:")
-    dpg.add_input_text(default_value= "18:18")
-    btn_result = dpg.add_button(label="Resultado")
+    get_horaSai2 = dpg.add_input_text(hint= "SAÍDA 2:")
+    
+    btn_result = dpg.add_button(label="Resultado", )
 
 
 
