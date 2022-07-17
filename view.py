@@ -19,7 +19,7 @@ vp = dpg.create_viewport(
 
 with dpg.window(tag= "primary"):
     dpg.add_text("Defina a Carga horária:")
-    get_carga = dpg.add_input_text(hint="Carga Horária: 08:48")
+    get_carga = dpg.add_input_text(hint="CARGA HORÁRIA: 08:48")
     
     dpg.add_text("Defina o horário da ENTRADA 1:")
     get_horaEnt1 = dpg.add_input_text(hint="ENTRADA 1: 08:00")
