@@ -1,4 +1,4 @@
-# calchours
+# calc_hours
 Calcular Horas
 
 Em primeiro momento será feita a calculadora de horas para verificar extra e falta, quantos minutos de extra ou falta.
